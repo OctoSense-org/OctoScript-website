@@ -87,7 +87,7 @@ There are concrete integration points: [Makepad Video](https://github.com/OctoSe
 
 ## Reuse Rust logic: one camera, two hosts
 
-The [camera example](https://github.com/OctoSense-org/Octoscript-AppCard/tree/feat/camera-app/apps/camera) separates `logic/`, `native/` and `oh/`. Both host manifests depend on `octosense-camera-logic`.
+The [camera example](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/feat/camera-app/apps/camera) separates `logic/`, `native/` and `oh/`. Both host manifests depend on `octosense-camera-logic`.
 
 ```text
                  octosense-camera-logic
@@ -113,6 +113,6 @@ Studio exposes a visual workflow to a human developer. Makepad also puts inspect
 
 An agent asks for current bounds, exercises a control, waits for a frame, checks the state and pixels, and repairs the relevant source. Tweaker edits do not automatically persist to source; the agent applies the reviewed changes and rebuilds to verify them.
 
-“Headless” in this development loop means that the Studio GUI is unnecessary and a supported native window can be hidden. Visual verification still uses the real GPU backend; a simulated renderer does not prove native appearance. Instrument coverage differs by backend, and the port belongs to an explicitly instrumented development build. See [app remote control](https://github.com/OctoSense-org/makepad/blob/octoscript/docs/agents/app-remote.md) and [the current AppCard instrument workflow](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/core/NATIVE-INSTRUMENT.md).
+“Headless” in this development loop means that the Studio GUI is unnecessary and a supported native window can be hidden. Visual verification still uses the real GPU backend; a simulated renderer does not prove native appearance. Instrument coverage differs by backend, and the port belongs to an explicitly instrumented development build. See [app remote control](https://github.com/OctoSense-org/makepad/blob/octoscript/docs/agents/app-remote.md) and [the current AppCard instrument workflow](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/core/NATIVE-INSTRUMENT.md).
 
 That closes the A2App loop: source is inspectable, widgets are addressable, actions are testable and visual changes can be traced back to a component. [The design-to-app flows](design-to-app.en.md) apply it to generated images and Sketch documents.

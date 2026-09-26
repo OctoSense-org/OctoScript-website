@@ -2,6 +2,8 @@
 
 [English](README.md) | 简体中文
 
+> **要开发 OctoSense 应用？** 你不需要这个仓库：它是语言网站 <https://octoscript.org/> 的源码，可作为背景阅读，但不属于开发、检查或发布应用的步骤。请按 [OctoSense 组织主页](https://github.com/OctoSense-org)给出的顺序阅读：[OctoScript-App-Design-Flow `AGENTS.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/AGENTS.md) → [`flows/README.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/README.md) → [`docs/QUICKSTART.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/docs/QUICKSTART.md)。
+
 [Octoscript](https://github.com/OctoSense-org/Octoscript) 的独立双语网站，维护于 [OctoSense-org/Octoscript-website](https://github.com/OctoSense-org/Octoscript-website)。英文版位于 `/`，简体中文版位于 `/cn/`。
 
 网站介绍这门 DSL 的设计动机、语法、宿主权限、L0–L3 渲染分层、UI 能力等级、Splash、原生组合以及 Agent 工具链。每种语言各有八篇指南，逐一讲解页面上的各项约定。设计到组件的示例配有可搜索的组件目录和一个真实的 Makepad/WebAssembly 实验室。支持浅色和深色主题。
@@ -11,8 +13,8 @@
 构建网站只需要 Node.js >= 22.12 和 npm。不需要任何同级仓库、Rust 工具链，也不会拉取远程内容。
 
 ```sh
-git clone https://github.com/OctoSense-org/Octoscript-website.git
-cd Octoscript-website
+git clone https://github.com/OctoSense-org/OctoScript-website.git
+cd OctoScript-website
 npm ci
 npm run dev
 ```

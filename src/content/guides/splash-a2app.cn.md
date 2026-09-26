@@ -87,7 +87,7 @@ Agent → L0/L1 → 检查后的 UiNode → 可复用 kit → Splash → Makepad
 
 ## Rust 复用的例证：一个相机，两种宿主
 
-[相机项目](https://github.com/OctoSense-org/Octoscript-AppCard/tree/feat/camera-app/apps/camera)拆成 `logic/`、`native/` 和 `oh/`。两个宿主的 Cargo 清单都依赖 `octosense-camera-logic`。
+[相机项目](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/feat/camera-app/apps/camera)拆成 `logic/`、`native/` 和 `oh/`。两个宿主的 Cargo 清单都依赖 `octosense-camera-logic`。
 
 ```text
                  octosense-camera-logic
@@ -113,6 +113,6 @@ Studio 为人类开发者提供可视化工作流；Makepad 同时把检查与�
 
 Agent 查询最新矩形，操作目标组件，等待一帧，再检查状态和像素，将发现的问题定位回源码。Tweaker 的编辑不会自动写入源文件；Agent 需要把确认后的变更写回，再构建验证。
 
-这里的 headless 指不依赖 Studio GUI，且在支持的平台上可以隐藏原生窗口。视觉验证仍使用真实 GPU 后端，模拟渲染不构成原生画面证明。仪器覆盖范围取决于后端，控制端口属于显式启用仪器的开发构建。见 [app remote control](https://github.com/OctoSense-org/makepad/blob/octoscript/docs/agents/app-remote.md)与 [AppCard 当前仪器流程](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/core/NATIVE-INSTRUMENT.md)。
+这里的 headless 指不依赖 Studio GUI，且在支持的平台上可以隐藏原生窗口。视觉验证仍使用真实 GPU 后端，模拟渲染不构成原生画面证明。仪器覆盖范围取决于后端，控制端口属于显式启用仪器的开发构建。见 [app remote control](https://github.com/OctoSense-org/makepad/blob/octoscript/docs/agents/app-remote.md)与 [AppCard 当前仪器流程](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/core/NATIVE-INSTRUMENT.md)。
 
 这就形成了 A2App 闭环：源码可检查、组件可定位、动作可测试、视觉修改可追溯。[设计到应用的两条流程](design-to-app.cn.md)将它应用到生成图片和 Sketch 文档。
