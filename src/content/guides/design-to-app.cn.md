@@ -4,7 +4,7 @@ Agent 要做的是把视觉意图连接到真实组件，再验证结果。图�
 
 ## Flow 1：一张图集，生成一组服务界面
 
-[image-to-appcard-flow](https://github.com/OctoSense-org/Octoscript-AppCard/tree/main/lab/image-to-appcard-flow)以包含一组相关页面的图集为起点。生成前统一描述字体、视觉身份、数据和动作，并明确哪些是应用页面，哪些是桌面服务卡片。
+[image-to-card](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/main/flows/image-to-card)以包含一组相关页面的图集为起点。生成前统一描述字体、视觉身份、数据和动作，并明确哪些是应用页面，哪些是桌面服务卡片。
 
 1. **保留与测量。** 保存实际提交的 prompt、原始像素和真实尺寸，检查每个页面的裁切，保留图像坐标与原生画板坐标之间的变换。
 2. **建立语义映射。** 结合设计意图、文字和几何测量与审查结果：标题成为 Label，动作成为控件，照片保持为图片。无法确定的区域需要先明确用途。
@@ -13,11 +13,11 @@ Agent 要做的是把视觉意图连接到真实组件，再验证结果。图�
 5. **检查与修复。** 分别检查组件结构、几何、交互和实际画面。当前原生仪器可直接查询和驱动应用，历史采集也使用过 Studio。
 6. **沿同一路径发布界面。** 流程可导出 Makepad WebAssembly、字体与声明的图片素材供 Astro 网站使用，再用真实组件边界测试浏览器交互。
 
-Runner 负责编排阶段，并不自行调用图像模型，也不会从像素自动推导完整应用。Agent 与明确的设计约定负责语义决策。详见[映射规则](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/image-to-appcard/MAPPING-RULES.md)与[当前原生仪器流程](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/core/NATIVE-INSTRUMENT.md)。
+Runner 负责编排阶段，并不自行调用图像模型，也不会从像素自动推导完整应用。Agent 与明确的设计约定负责语义决策。详见[映射规则](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-lib/MAPPING-RULES.md)与[当前原生仪器流程](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/core/NATIVE-INSTRUMENT.md)。
 
 ## 例证：空调送达后预约安装
 
-[空调流程清单](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/image-to-appcard-flow/examples/aircon.flow.json)描述一个 12 场景服务示例，从购买、物流延伸到安装、日历协调与支付。页面转换由服务状态驱动，而非按动画时间自动前进。
+[空调流程清单](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-to-card/examples/aircon.flow.json)描述一个 12 场景服务示例，从购买、物流延伸到安装、日历协调与支付。页面转换由服务状态驱动，而非按动画时间自动前进。
 
 `aircon-05` 是送达后的安装邀约，它的映射体现了关键决策：
 
@@ -43,7 +43,7 @@ bash tools/image-to-appcard-flow.sh plan \
 
 ## Flow 2：从 Sketch 文档到可复用组件 kit
 
-[sketch-to-appcard](https://github.com/OctoSense-org/Octoscript-AppCard/tree/main/lab/sketch-to-appcard)从结构化设计资料开始：画板、分组、symbol、文字、字体、mask 与稳定 source ID。这条路线能够保留平面截图已经丢失的信息。
+[kits/sketch](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/main/flows/kits/sketch)从结构化设计资料开始：画板、分组、symbol、文字、字体、mask 与稳定 source ID。这条路线能够保留平面截图已经丢失的信息。
 
 ```text
 Sketch 文档与 source ID

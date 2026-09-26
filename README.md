@@ -2,6 +2,8 @@
 
 English | [简体中文](README.zh-CN.md)
 
+> **Building an OctoSense app?** You do not need this repository: it is the source of the language website <https://octoscript.org/>, useful background reading but not part of building, checking or publishing an app. Start from the [OctoSense organization profile](https://github.com/OctoSense-org)'s reading order: [OctoScript-App-Design-Flow `AGENTS.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/AGENTS.md) → [`flows/README.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/README.md) → [`docs/QUICKSTART.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/docs/QUICKSTART.md).
+
 The independent bilingual website for [Octoscript](https://github.com/OctoSense-org/Octoscript), maintained in [OctoSense-org/Octoscript-website](https://github.com/OctoSense-org/Octoscript-website). English is at `/`; Simplified Chinese is at `/cn/`.
 
 The site covers the DSL's motivation, syntax, host authority, L0–L3 rendering layers, UI capability levels, Splash, native composition and agent tooling. Eight guides in each language explain the contracts on the page. A searchable component catalog and a real Makepad/WebAssembly lab accompany the design-to-component examples. Light and dark themes are supported.
@@ -11,8 +13,8 @@ The site covers the DSL's motivation, syntax, host authority, L0–L3 rendering 
 Only Node.js >= 22.12 and npm are needed to build the website. No sibling repository, Rust toolchain or remote content fetch is required.
 
 ```sh
-git clone https://github.com/OctoSense-org/Octoscript-website.git
-cd Octoscript-website
+git clone https://github.com/OctoSense-org/OctoScript-website.git
+cd OctoScript-website
 npm ci
 npm run dev
 ```

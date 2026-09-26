@@ -4,7 +4,7 @@ The agent's job is to connect visual intent to real components, then verify the 
 
 ## Flow 1: an image atlas becomes a service experience
 
-[image-to-appcard-flow](https://github.com/OctoSense-org/Octoscript-AppCard/tree/main/lab/image-to-appcard-flow) starts with one atlas containing related screens. Shared typography, identity, data and actions are described together before generation. An application surface and a desktop service card are explicitly different owners.
+[image-to-card](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/main/flows/image-to-card) starts with one atlas containing related screens. Shared typography, identity, data and actions are described together before generation. An application surface and a desktop service card are explicitly different owners.
 
 1. **Preserve and measure.** Save the submitted prompt, original pixels and actual dimensions. Validate scene crops and retain the transforms between image pixels and the native artboard.
 2. **Map semantic roles.** Combine authored intent, measured text/geometry and review. A headline becomes a Label, an action becomes a control, and a photo remains artwork. Unknown regions need a decision before compilation.
@@ -13,11 +13,11 @@ The agent's job is to connect visual intent to real components, then verify the 
 5. **Inspect and repair.** Compare widget structure, geometry, interaction and rendered appearance separately. The current native instrument can inspect and drive an app directly; historical captures also used Studio.
 6. **Package the same rendering path.** The flow can export a Makepad WebAssembly package, fonts and declared artwork for the Astro site, then test real native widget bounds in the browser.
 
-The runner orchestrates these stages. It does not call an image model or automatically infer a complete application from pixels. The agent and authored contracts provide the semantic decisions. See the [mapping rules](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/image-to-appcard/MAPPING-RULES.md) and [current native instrument](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/core/NATIVE-INSTRUMENT.md).
+The runner orchestrates these stages. It does not call an image model or automatically infer a complete application from pixels. The agent and authored contracts provide the semantic decisions. See the [mapping rules](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-lib/MAPPING-RULES.md) and [current native instrument](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/core/NATIVE-INSTRUMENT.md).
 
 ## Worked example: booking an air-conditioner installation
 
-The [aircon flow manifest](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/lab/image-to-appcard-flow/examples/aircon.flow.json) describes a 12-scene service example. It moves from shopping and delivery to installation, calendar coordination and payment. Those transitions come from service state, not an animation timeline.
+The [aircon flow manifest](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-to-card/examples/aircon.flow.json) describes a 12-scene service example. It moves from shopping and delivery to installation, calendar coordination and payment. Those transitions come from service state, not an animation timeline.
 
 Scene `aircon-05` offers installation after delivery. Its source-to-component mapping illustrates the key decisions:
 
@@ -43,7 +43,7 @@ bash tools/image-to-appcard-flow.sh plan \
 
 ## Flow 2: a Sketch document becomes a reusable kit
 
-[sketch-to-appcard](https://github.com/OctoSense-org/Octoscript-AppCard/tree/main/lab/sketch-to-appcard) starts from structured design data: artboards, groups, symbols, text, fonts, masks and stable source IDs. It can preserve information that a flat screenshot has lost.
+[kits/sketch](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/main/flows/kits/sketch) starts from structured design data: artboards, groups, symbols, text, fonts, masks and stable source IDs. It can preserve information that a flat screenshot has lost.
 
 ```text
 Sketch document and source IDs
