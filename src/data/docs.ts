@@ -24,5 +24,5 @@ const modules = {
 };
 export const guidesFor = (locale: Locale) => content[locale].guides.map(guide => {
   const module = modules[locale][guide.slug as keyof typeof modules.en];
-  return {...guide, locale, Content: module.Content, headings: module.getHeadings()};
+  return {...guide, locale, Content: module.Content, compiledContent: module.compiledContent, headings: module.getHeadings()};
 });
