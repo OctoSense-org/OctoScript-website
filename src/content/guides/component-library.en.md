@@ -41,6 +41,8 @@ A registered kit has four pieces: `tokens.json` contains measured colors, fonts,
 
 The demo draws its content and controls through Rust → WebAssembly → Makepad WebGL. The surrounding page only selects examples, sets a theme and reports actual runtime state. Choose delivery speed, toggle preferences and confirm in Material; navigate subpages and color/type examples in Flutter. State lives only in the current demo instance and resets on reload.
 
+This Rust widget state is separate from an app database or agent memory. [The app and agent guide](octosense-apps.en.md) explains those stores and their access rules.
+
 The renderer loads on demand. WebAssembly and WebGL are required; a failed start exposes a retry action. Canvas assistive-technology support differs from HTML forms, so the catalog, syntax and instructions remain accessible HTML.
 
 ## Maintenance and sources

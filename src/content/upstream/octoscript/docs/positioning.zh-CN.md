@@ -14,10 +14,12 @@ Octoscript 和 Makepad 的 Splash UI 宿主使用同一套 `makepad-script` VM �
 | --- | --- |
 | Makepad `makepad-script` | 共享 VM、解析器与脚本执行机制 |
 | Octoscript | 工作流语言约定、审查、执行限制、能力 API、工作流数据流，以及 UI 规范校验与实例化 |
-| 嵌入宿主，例如 Octos | 注册服务、绑定账户和数据、授权操作、调度任务、保存应用状态 |
+| 工作流嵌入宿主 | 注册服务、绑定账户和数据、授权操作、调度任务、保存应用状态 |
 | Octoscript-Makepad | 将 UI 节点转换为 Makepad 组件 DSL，并提供原生组件 kit |
 | Makepad Splash 宿主 | 提供组件绑定、挂载生成的组件 DSL，并处理原生渲染与交互 |
-| Octoscript-AppCard | App Card 组合、主题使用、交互流程、Agent／客户端集成与端到端示例 |
+| OctoScript-App-Design-Flow | 应用创作、组件组合、CLI 启动与设计到卡片的流程 |
+| App Hub | 应用包准入、安装、容器 UI 宿主与宿主服务传输 |
+| OctoSense + octos | Shell 持有应用数据与服务适配器；内核负责 Agent turn、session 与 Peer 路由 |
 
 共享 VM 实现不要求共用同一个 VM 实例、堆或宿主绑定。工作流宿主暴露注册的工具；UI 宿主安装视图所需的组件模块，并接入事件循环。
 
@@ -40,7 +42,7 @@ LLM 输出
 
 ```text
 生成的 L0/L1 声明
-  → 校验后的语义 UiNode 树与数据绑定
+  → 实例化后的语义卡片树与数据绑定
   → 主题／组件 kit 与渲染器节点
   → Makepad Splash DSL
   → 使用 makepad-script 的 Splash 宿主
@@ -51,7 +53,7 @@ LLM 输出
 
 L0 是声明式 UI 规范，包含组件、插槽、数据源、带键集合、状态和事件转换；实例化本身不需要 VM。L1 在此基础上增加有界的纯算术表达式。它们是与工作流语言并列的 UI 规范，并非产品或渲染层的分级。[正式 UI 规范（英文）](ui-profile-l0.md)定义可接受的源码；[Makepad 集成指南](makepad-ui-compatibility.zh-CN.md)说明渲染交接过程。
 
-App Card 的详细设计与使用文档放在 [Octoscript-AppCard](https://github.com/OctoSense-org/Octoscript-AppCard)，包括[组件组合](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/docs/APP-CARD-COMPONENTIZATION.md)和 [Agent／客户端架构](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/docs/ARCHITECTURE.md)。原生渲染器与 kit API 位于 [Octoscript-Makepad](https://github.com/OctoSense-org/Octoscript-Makepad)。
+应用创作流程位于 [OctoScript-App-Design-Flow](https://github.com/OctoSense-org/OctoScript-App-Design-Flow)，原生渲染器与 kit API 位于 [OctoScript-Makepad](https://github.com/OctoSense-org/OctoScript-Makepad)。本站的[应用与 Agent 导读](../../../guides/octosense-apps.cn.md)说明当前 Shell 集成、运行命令与工具边界。
 
 ## 从哪里开始
 

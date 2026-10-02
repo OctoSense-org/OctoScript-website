@@ -56,12 +56,13 @@ Splash 可以用 `pixel: fn() { ... }` 等 shader 定义描述 GPU 绘制。实�
 
 **直接写 Splash：** 可信 UI 宿主安装组件并执行其 DSL，保留 Makepad 完整的组合与样式能力。
 
-**生成 L0／L1：** 先检查较窄的 UI 约定，实例化语义 `UiNode`，套用主题／组件 kit，再转换为 Splash。L0 实例化无需 VM；L1 增加有界纯算术。kit 求值与最终 Splash 挂载可以使用共享的 `makepad-script` 实现。
+**生成 L0／L1：** 先检查较窄的 UI 约定，实例化语义卡片树，再通过组件 kit 转换。受检查的求值得到渲染器 `UiNode`，翻译后生成 Makepad 组件源码。L0 实例化无需 VM；L1 增加有界纯算术。kit 求值与最终 Splash 挂载可以使用共享的 `makepad-script` 实现。
 
 ```text
-Agent → L0/L1 → 检查后的 UiNode → 可复用 kit → Splash → Makepad 组件
-                                              ↑
-                                      直接编写 Splash UI
+L0/L1 + 数据 → 实例化卡片树 → kit 转换 → 渲染器 UiNode
+  → Makepad 组件源码 → 宿主挂载原生组件
+
+直接编写 Splash → 容器 UI 宿主 → 原生组件
 ```
 
 这样既复用了 Splash 语言及组件生态，也给生成式卡片建立明确的准入边界。组件声明不会被误送进独立的工作流检查器。详见 [Makepad 集成](../upstream/octoscript/docs/makepad-ui-compatibility.zh-CN.md)。
@@ -85,9 +86,11 @@ Agent → L0/L1 → 检查后的 UiNode → 可复用 kit → Splash → Makepad
 
 已有接入点包括：[Video 组件](https://github.com/OctoSense-org/makepad/blob/octoscript/widgets/src/video.rs)挂载原生相机预览；[iOS 后端](https://github.com/OctoSense-org/makepad/blob/octoscript/platform/src/os/apple/ios/ios.rs)管理预览生命周期；[Android bridge](https://github.com/OctoSense-org/makepad/blob/octoscript/platform/src/os/linux/android/android_jni.rs)连接 GL 表面上的原生 composer。它们展示了具体的混合组合能力；任意控件之间的层级、裁剪和事件兼容仍需对应适配。
 
-## Rust 复用的例证：一个相机，两种宿主
+## 历史例证：一个相机，两种宿主
 
-[相机项目](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/feat/camera-app/apps/camera)拆成 `logic/`、`native/` 和 `oh/`。两个宿主的 Cargo 清单都依赖 `octosense-camera-logic`。
+[相机项目](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/641353aff8021f9f74e2d8ed259c1d4fc269721e/apps/camera)拆成 `logic/`、`native/` 和 `oh/`。两个宿主的 Cargo 清单都依赖 `octosense-camera-logic`。
+
+这是开发分支中记录的双宿主例证，不是当前 OctoSense Camera 应用包的架构。
 
 ```text
                  octosense-camera-logic
@@ -116,3 +119,8 @@ Agent 查询最新矩形，操作目标组件，等待一帧，再检查状态�
 这里的 headless 指不依赖 Studio GUI，且在支持的平台上可以隐藏原生窗口。视觉验证仍使用真实 GPU 后端，模拟渲染不构成原生画面证明。仪器覆盖范围取决于后端，控制端口属于显式启用仪器的开发构建。见 [app remote control](https://github.com/OctoSense-org/makepad/blob/octoscript/docs/agents/app-remote.md)与 [AppCard 当前仪器流程](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/core/NATIVE-INSTRUMENT.md)。
 
 这就形成了 A2App 闭环：源码可检查、组件可定位、动作可测试、视觉修改可追溯。[设计到应用的两条流程](design-to-app.cn.md)将它应用到生成图片和 Sketch 文档。
+
+
+## 运行应用并与它的 Agent 对话
+
+上述仪器用于开发。[运行应用，再追踪它的 Agent](octosense-apps.cn.md)说明产品运行时：独立 card-host 与完整 Shell、原生 Rust 与容器应用、用户／系统对话、数据访问，以及宿主授权的工具。

@@ -43,6 +43,8 @@ Flutter kit 覆盖 Material 3、Cupertino Gallery、Form App、Date Planner、Co
 
 演示按需加载，以免阅读文档时下载整个渲染器。需要浏览器支持 WebAssembly 与 WebGL；启动失败会显示重试入口。canvas 的辅助技术支持不同于网页表单，目录、语法和说明始终保留为可访问的 HTML 文本。
 
+此处 Rust 组件状态与应用数据库、Agent 记忆分开。[应用与 Agent 导读](octosense-apps.cn.md)说明这些存储及其访问规则。
+
 ## 维护与来源
 
 [语言与四层链路](language-profiles.cn.md)定义生成边界；[像素到组件的流程](design-to-app.cn.md)展示实际来源映射。组件依据 [Material 词汇表](https://github.com/OctoSense-org/Octoscript-Makepad/blob/main/components/material/screens/WIDGETS.md)、[Flutter 示例说明](https://github.com/OctoSense-org/Octoscript-Makepad/blob/main/components/flutter/README.md) 和 [原生 kit 契约](https://github.com/OctoSense-org/Octoscript-Makepad/blob/main/docs/native-l0-kits.md)整理；演示的固定源码版本与构建摘要可在演示面板下载。
