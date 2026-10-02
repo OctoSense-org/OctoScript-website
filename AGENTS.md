@@ -15,6 +15,10 @@ Read [README.md](README.md) and the bilingual app guides under
 - Preserve source provenance: corrections to checked-in upstream snapshots
   require updated hashes and an explicit correction record in `sources.json`.
   The consuming app's runtime and Cargo locks select its actual implementation.
+- The React Flow explorer lives in `src/components/architecture/`; keep node
+  ownership, edge meanings and both locales aligned with the prose. Preserve
+  keyboard selection, readable mobile focus, page scrolling, themes and the
+  static text version. Run `tests/architecture.spec.ts` for graph changes.
 - Keep browser sample state and historical design examples labelled. Preserve
   demo behavior and the prebuilt WASM package unless the task changes them.
 - For content/navigation changes run `npm run test:unit`, `npm run build`,

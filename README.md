@@ -8,7 +8,7 @@ The independent bilingual website for [Octoscript](https://github.com/OctoSense-
 
 The site covers the DSL's motivation, syntax, host authority, L0–L3 rendering layers, UI capability levels, Splash, native composition and agent tooling. Nine guides in each language explain the contracts on the page. A searchable component catalog and a real Makepad/WebAssembly lab accompany the design-to-component examples. Light and dark themes are supported.
 
-The [app and agent guide](src/content/guides/octosense-apps.en.md) follows native Rust, Splash and L0 apps into OctoSense, including human/system conversations, app data, tool grants and Tokio tasks. Contributor instructions are in [AGENTS.md](AGENTS.md).
+The [app and agent guide](src/content/guides/octosense-apps.en.md) follows native Rust, Splash and L0 apps into OctoSense, including human/system conversations, app data, tool grants and Tokio tasks. Its interactive React Flow map separates app rendering from agent requests, with node details, keyboard controls and an HTML text version. Contributor instructions are in [AGENTS.md](AGENTS.md).
 
 ## Run locally
 
@@ -40,6 +40,7 @@ The build checks Astro/TypeScript and writes the static site to `dist/`. Playwri
 - `src/data/docs.ts`: combines the guides and snapshots into the documentation routes.
 - `scripts/doc-links.mjs`: maps relative Markdown links to local guides; optional upstream source references still point to the language repository.
 - `src/components/`: homepage sections, component catalog, WASM panel and recorded design-flow inspector.
+- `src/components/architecture/`: React Flow explorer, bilingual graph data and scoped styles. `Guide.astro` places it after the original guide introduction; `tests/architecture.spec.ts` checks interaction, accessibility and fallback behavior.
 - `src/styles/`: typography, responsive layout and light/dark theme tokens.
 - `public/examples/provenance.json`: image source hashes and the archived design review's status.
 

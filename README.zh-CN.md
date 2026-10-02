@@ -8,7 +8,7 @@
 
 网站介绍这门 DSL 的设计动机、语法、宿主权限、L0–L3 渲染分层、UI 能力等级、Splash、原生组合以及 Agent 工具链。每种语言各有九篇指南，逐一讲解页面上的各项约定。设计到组件的示例配有可搜索的组件目录和一个真实的 Makepad/WebAssembly 实验室。支持浅色和深色主题。
 
-[应用与 Agent 指南](src/content/guides/octosense-apps.cn.md)追踪原生 Rust、Splash 和 L0 应用如何进入 OctoSense，并说明用户／系统对话、应用数据、工具授权与 Tokio 任务。协作规则见 [AGENTS.md](AGENTS.md)。
+[应用与 Agent 指南](src/content/guides/octosense-apps.cn.md)追踪原生 Rust、Splash 和 L0 应用如何进入 OctoSense，并说明用户／系统对话、应用数据、工具授权与 Tokio 任务。交互式 React Flow 图把应用渲染与 Agent 请求分开，提供节点详情、键盘控制与 HTML 文字版。协作规则见 [AGENTS.md](AGENTS.md)。
 
 ## 本地运行
 
@@ -40,6 +40,7 @@ npm run test:e2e
 - `src/data/docs.ts`：把指南和快照组合成文档路由。
 - `scripts/doc-links.mjs`：把 Markdown 相对链接映射到本地指南；可选的上游源码引用仍指向语言仓库。
 - `src/components/`：首页各板块、组件目录、WASM 面板以及录制的设计流程查看器。
+- `src/components/architecture/`：React Flow 查看器、双语图数据与局部样式。`Guide.astro` 把它放在原指南引言之后；`tests/architecture.spec.ts` 检查交互、可访问性与无 JavaScript 的文字阅读。
 - `src/styles/`：字体排印、响应式布局以及浅色/深色主题 token。
 - `public/examples/provenance.json`：图片来源哈希以及已归档设计评审的状态。
 
