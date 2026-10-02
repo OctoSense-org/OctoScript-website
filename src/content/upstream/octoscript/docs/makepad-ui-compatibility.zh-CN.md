@@ -9,7 +9,7 @@ Octoscript 可以描述工作流的界面，并将 UI 节点交给 Makepad 进�
 ```text
 LLM 生成的 L0/L1 卡片
   → octoscript-ui-l0：校验与实例化
-  → 语义 UiNode + 数据绑定
+  → 实例化后的语义卡片树 + 数据绑定
   → 通过主题／组件 kit 转换
   → 渲染器 UiNode
   → octoscript-makepad：翻译
@@ -18,15 +18,17 @@ LLM 生成的 L0/L1 卡片
   → Makepad 原生组件
 ```
 
-[Octoscript-Makepad](https://github.com/OctoSense-org/Octoscript-Makepad) 提供渲染器节点模型、后端翻译和原生组件 kit。嵌入它的 UI 宿主提供数据、组件模块、事件处理和状态保存；宿主适配器把卡片声明的操作连接到应用服务。
+[OctoScript-Makepad](https://github.com/OctoSense-org/OctoScript-Makepad) 提供渲染器节点模型、后端翻译和原生组件 kit。嵌入它的 UI 宿主提供数据、组件模块、事件处理和状态保存；宿主适配器把卡片声明的操作连接到应用服务。
 
 L0 的实例化不依赖 VM。Kit 求值和最终的 Splash 组件宿主可以使用共享 VM；这不意味着工作流与 UI 必须运行在同一个 VM 实例中，或拥有相同的可用模块。
 
-[UI 规范（英文）](ui-profile-l0.md)是生成 L0/L1 源码的正式约定。实际卡片组合、主题和交互流程见 [Octoscript-AppCard](https://github.com/OctoSense-org/Octoscript-AppCard)。[定位与架构](positioning.zh-CN.md)进一步说明工作流宿主与 UI 宿主的职责。
+[UI 规范（英文）](ui-profile-l0.md)是生成 L0/L1 源码的正式约定。实际卡片组合、主题和交互流程见 [OctoScript-App-Design-Flow](https://github.com/OctoSense-org/OctoScript-App-Design-Flow)。[定位与架构](positioning.zh-CN.md)进一步说明工作流宿主与 UI 宿主的职责。
+
+当前宿主职责与启动命令见[应用与 Agent 导读](../../../guides/octosense-apps.cn.md)。框架目录与预览宿主在主 VM 上求值最终 `View`，并挂载到 `Splash.view`；容器应用有自己的准入与隔离环境设置。
 
 ## Makepad 宿主与兼容性样例
 
-当前固定版本的 Makepad 源码包含 [`Splash` 组件](https://github.com/OctoSense-org/makepad/blob/9069cfaf87960f535f2440d736d223238b88c5b1/widgets/src/splash.rs)和 [Splash 示例应用](https://github.com/OctoSense-org/makepad/tree/9069cfaf87960f535f2440d736d223238b88c5b1/examples/splash)。该组件提供原生 UI 绑定并挂载组件树。
+本参考文档记录的 Makepad 版本包含 [`Splash` 组件](https://github.com/OctoSense-org/makepad/blob/9069cfaf87960f535f2440d736d223238b88c5b1/widgets/src/splash.rs)和 [Splash 示例应用](https://github.com/OctoSense-org/makepad/tree/9069cfaf87960f535f2440d736d223238b88c5b1/examples/splash)。该组件提供原生 UI 绑定并挂载组件树。
 
 本仓库保留 [`examples/makepad_ui_counter.octoscript`](../examples/makepad_ui_counter.octoscript) 作为小型解析器兼容性样例。它使用 Makepad UI 的惯例，包括 `View`、`width: Fill`、命名子节点，以及使用宿主提供的 `ui` 句柄的回调。
 

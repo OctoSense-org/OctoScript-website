@@ -4,13 +4,17 @@
   "snapshot_date": "2026-09-19",
   "note": "Snapshot of the working tree, including local documentation updates; hashes identify the exact copies. These are website-owned snapshots, not live imports.",
   "files": {
-    "docs/positioning.md": "49f520b8b6a0491d2d664d279d94f3149b631eeec2ff4373588019e750926a0d",
-    "docs/positioning.zh-CN.md": "b4296f0c1e6f2c057ff7870619eb28d9b6c25cb25faff7cae4ae1f8d2ff039d9",
-    "docs/makepad-ui-compatibility.md": "751637eaf8c7623d1a9b2dfe98f142e077d729b9e1a1e8a1c4775b96a3d1b41a",
-    "docs/makepad-ui-compatibility.zh-CN.md": "34e6be0ff83eb65ca7753ec0ea9d6a01710a9773e1272c600d12dd67cf45b71a",
+    "docs/positioning.md": "cafe7d05191e6ad9e7ecd4f182d4fc81435625dd756da23d419a4a1b3a1e6c04",
+    "docs/positioning.zh-CN.md": "efce5e46c4f0582ad0eff44199fc3a206b71ca13d9deb0aae87e31df80f7c3df",
+    "docs/makepad-ui-compatibility.md": "581b32fef4a3739b2ffff66c4aa903415918cfdf3243a212c72db878e3a795c1",
+    "docs/makepad-ui-compatibility.zh-CN.md": "17b5cd5888077456ea6f77c08cc8b09d15fe28b3a56b6a758649d76fe4462653",
     "UPSTREAM.md": "4d5d65c6fc21937d4c67dd2d38e29bc5a933b4459c8729c7d200820b41c5f64c",
     "UPSTREAM.zh-CN.md": "36b829374e8fd65bd4453ce79bc411a4b2b1d07da2ffad48fcb348655094f567",
     "examples/tool_workflow.octoscript": "5305e1bd6f8c37b73e36417528c56f7e6335734d6468ed2dd73494299105c276",
     "LICENSE": "3855d73a873244ec424ac5781d5d8fc8e2a789ff9d2f1cb804bec585a64ea88f"
+  },
+  "website_corrections": {
+    "date": "2026-10-02",
+    "scope": "Corrected realized-card versus renderer-node terminology, repository ownership, and current OctoSense host integration links against the ecosystem code walkthroughs. The original source base and snapshot date remain recorded above."
   }
 }

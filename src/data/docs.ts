@@ -16,9 +16,11 @@ import * as syntaxEn from '../content/guides/language-profiles.en.md';
 import * as syntaxCn from '../content/guides/language-profiles.cn.md';
 import * as componentsEn from '../content/guides/component-library.en.md';
 import * as componentsCn from '../content/guides/component-library.cn.md';
+import * as appsEn from '../content/guides/octosense-apps.en.md';
+import * as appsCn from '../content/guides/octosense-apps.cn.md';
 const modules = {
-  en: {'why-octoscript': whyEn, 'splash-a2app': splashEn, 'design-to-app': flowsEn, 'language-profiles': syntaxEn, 'component-library': componentsEn, architecture: architectureEn, makepad: makepadEn, 'shared-vm': vmEn},
-  cn: {'why-octoscript': whyCn, 'splash-a2app': splashCn, 'design-to-app': flowsCn, 'language-profiles': syntaxCn, 'component-library': componentsCn, architecture: architectureCn, makepad: makepadCn, 'shared-vm': vmCn},
+  en: {'octosense-apps': appsEn, 'why-octoscript': whyEn, 'splash-a2app': splashEn, 'design-to-app': flowsEn, 'language-profiles': syntaxEn, 'component-library': componentsEn, architecture: architectureEn, makepad: makepadEn, 'shared-vm': vmEn},
+  cn: {'octosense-apps': appsCn, 'why-octoscript': whyCn, 'splash-a2app': splashCn, 'design-to-app': flowsCn, 'language-profiles': syntaxCn, 'component-library': componentsCn, architecture: architectureCn, makepad: makepadCn, 'shared-vm': vmCn},
 };
 export const guidesFor = (locale: Locale) => content[locale].guides.map(guide => {
   const module = modules[locale][guide.slug as keyof typeof modules.en];

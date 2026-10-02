@@ -44,7 +44,7 @@ for (const locale of ['en', 'cn'] as const) {
   });
 
   test(`${locale}: new guides have working links and readable code in both themes`, async ({ page }) => {
-    for (const slug of ['why-octoscript', 'splash-a2app', 'design-to-app']) {
+    for (const slug of ['octosense-apps', 'why-octoscript', 'splash-a2app', 'design-to-app']) {
       await page.goto(`${home}docs/${slug}/`);
       await expect(page.locator('article h1')).toHaveCount(1);
       const localLinks = await page.locator('article a').evaluateAll(links => links.map(link => (link as HTMLAnchorElement).href).filter(href => new URL(href).origin === location.origin));

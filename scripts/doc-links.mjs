@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const upstream = 'src/content/upstream/octoscript/';
 const routes = {
-  ...Object.fromEntries(['why-octoscript', 'splash-a2app', 'design-to-app', 'language-profiles', 'component-library'].flatMap(slug => ['en', 'cn'].map(locale => [`src/content/guides/${slug}.${locale}.md`, `${locale === 'cn' ? '/cn' : ''}/docs/${slug}/`]))),
+  ...Object.fromEntries(['octosense-apps', 'why-octoscript', 'splash-a2app', 'design-to-app', 'language-profiles', 'component-library'].flatMap(slug => ['en', 'cn'].map(locale => [`src/content/guides/${slug}.${locale}.md`, `${locale === 'cn' ? '/cn' : ''}/docs/${slug}/`]))),
   ...Object.fromEntries(Object.entries({
   'README.md': '/', 'README.zh-CN.md': '/cn/',
   'docs/README.md': '/docs/', 'docs/README.zh-CN.md': '/cn/docs/',

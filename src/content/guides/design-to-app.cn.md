@@ -17,7 +17,7 @@ Runner 负责编排阶段，并不自行调用图像模型，也不会从像素�
 
 ## 例证：空调送达后预约安装
 
-[空调流程清单](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-to-card/examples/aircon.flow.json)描述一个 12 场景服务示例，从购买、物流延伸到安装、日历协调与支付。页面转换由服务状态驱动，而非按动画时间自动前进。
+[空调流程清单](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-to-card/examples/aircon.flow.json)描述一个 12 场景服务示例，从购买、物流延伸到安装、日历协调与支付。页面转换由示例服务状态驱动。`installation.open_slots` 等名称是示例服务约定，不是预装的跨应用权限；网站不会实际预约或付款。
 
 `aircon-05` 是送达后的安装邀约，它的映射体现了关键决策：
 
@@ -40,6 +40,14 @@ bash tools/image-to-appcard-flow.sh plan \
 ```
 
 `plan` 只打印阶段和参数，不执行它们。仓库指南说明准备、编译、采证和打包步骤；源图、服务实现及原生构建环境都是明确输入。
+
+## 默认 Runner 实际执行什么
+
+默认阶段是 `intake,semantic,compile,bundle,service-test`：保留输入、检查已编写的场景映射、编译卡片／数据／kit、导出包，再运行 manifest 明确列出的服务检查。语义检查前，场景契约和映射必须已存在。准备、原生截图、视觉审查与网站打包需要另外选择对应阶段；默认列表不隐含这些步骤。
+
+Runner 在修改文件前解析计划，并记录命令、日志和退出状态。第一个失败的命令会停止后续执行，`run.json` 记录尚未运行的阶段。导出成功后仍需应用 manifest、商店列表和发布交接：截图并人工审查、重新盖摘要并检查、由密钥持有者签名，以及批准准确的提交版本。完整顺序见 [Design Flow 源码导读](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/218b25d2460d64f843932f67d419467618464fb9/docs/CODE-WALKTHROUGH.md)。
+
+从文字需求生成 `main.splash` 应用时，使用独立的 [script-app 流程](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/main/flows/script-app)。[运行应用，再追踪它的 Agent](octosense-apps.cn.md)说明本地宿主与 Shell 集成。
 
 ## Flow 2：从 Sketch 文档到可复用组件 kit
 

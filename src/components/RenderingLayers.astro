@@ -6,12 +6,12 @@ const cn=locale==='cn';
 const layers=cn?[
  ['L0','检查与展开','卡片 + 宿主数据 → UI 树','验证数据来源、状态、key 与展开预算。'],
  ['L1','组件库映射','UI 树 + kit → 组件调用','保留角色、参数、主题和来源 ID。'],
- ['L2','VM 与节点翻译','组件调用 → UiNode → Splash','共享 VM 求值，生成后端组件描述。'],
+ ['L2','VM 与节点翻译','组件调用 → UiNode → Splash','源码求值得到 UiNode，再由 Rust 生成组件描述。'],
  ['L3','挂载与交互','组件描述 → 像素 + 事件','实际布局、绘制、点击与状态回传。'],
 ]:[
  ['L0','Check & realize','Card + host data → UI tree','Validate origins, state, keys and traversal budgets.'],
  ['L1','Lower through a kit','UI tree + kit → component calls','Preserve roles, parameters, themes and source IDs.'],
- ['L2','Evaluate & translate','Calls → UiNode → Splash','The shared VM produces backend widget descriptions.'],
+ ['L2','Evaluate & translate','Calls → UiNode → Splash','Evaluate source into UiNode; Rust emits widget descriptions.'],
  ['L3','Mount & interact','Widgets → pixels + events','Real layout, rendering, input and state feedback.'],
 ];
 ---

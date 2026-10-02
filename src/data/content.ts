@@ -1,6 +1,6 @@
 export type Locale = 'en' | 'cn';
 export const repository = 'https://github.com/OctoSense-org/Octoscript';
-export const appcard = 'https://github.com/OctoSense-org/Octoscript-AppCard';
+export const appcard = 'https://github.com/OctoSense-org/OctoScript-App-Design-Flow';
 export const renderer = 'https://github.com/OctoSense-org/Octoscript-Makepad';
 export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 export const asset = (path: string) => `${base}/${path}`;
@@ -49,6 +49,7 @@ export const content = {
     docsLabel: '10 / DOCUMENTATION', docsTitle: 'A clear next step',
     docsIntro: 'Start with the architecture. Go deeper when you need to.',
     guides: [
+      { slug: 'octosense-apps', title: 'Run an app, follow its agent', description: 'Native Rust, Splash and L0 apps; human conversations, app data, tool grants and Tokio.', tag: 'APPS & AGENTS' },
       { slug: 'why-octoscript', title: 'Why a DSL for agents?', description: 'Motivation, Python / JavaScript tradeoffs, execution boundaries and Splash lineage.', tag: 'MOTIVATION' },
       { slug: 'splash-a2app', title: 'Splash → A2App', description: 'Language features, reusable Rust, native UI hosts and in-app agent instruments.', tag: 'LANGUAGE & HOSTS' },
       { slug: 'design-to-app', title: 'Pixels → components', description: 'Two detailed flows: generated image atlases and structured Sketch documents.', tag: 'WORKED EXAMPLES' },
@@ -128,6 +129,7 @@ export const content = {
     stepTitles: ['获取源码', '校验并运行', '连接你的工具'], stepBodies: ['克隆 Octoscript 仓库。', '执行前，先通过校验器检查源码。', '在嵌入宿主中注册应用工具。'], toolsLink: '宿主工具目录',
     docsLabel: '10 / 开发文档', docsTitle: '下一步，清晰可见', docsIntro: '先了解架构，再按需深入。',
     guides: [
+      { slug: 'octosense-apps', title: '运行应用，追踪 Agent', description: '原生 Rust、Splash 与 L0 应用；用户对话、应用数据、工具授权和 Tokio。', tag: '应用与 AGENT' },
       { slug: 'why-octoscript', title: '为何为 Agent 设计 DSL？', description: '设计动机、Python／JavaScript 的取舍、执行边界与 Splash 来源。', tag: '设计动机' },
       { slug: 'splash-a2app', title: 'Splash → A2App', description: '语言特性、Rust 复用、原生 UI 宿主与应用内 Agent 仪器。', tag: '语言与宿主' },
       { slug: 'design-to-app', title: '像素 → 组件', description: '生成图集与 Sketch 文档两条流程，以及详细的组件映射例证。', tag: '完整例证' },

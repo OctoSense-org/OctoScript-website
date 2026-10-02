@@ -15,6 +15,8 @@ In design-flow reviews, these labels name the rendering pipeline. They do not re
 
 For an appointment button, L0 binds copy and its event to a source ID; L1 selects `KitButton` and a theme; L2 builds its children; L3 activates the native Button and the host receives `installation.open_slots`. Source validation and a matching picture alone do not establish working interaction.
 
+The [current renderer path](octosense-apps.en.md#from-card-source-to-native-widgets) distinguishes the realized L0 tree from the renderer's `UiNode`, and explains which host evaluates and mounts the final widgets. These layers do not create an app agent or grant service access.
+
 ## UI capability levels are a separate axis
 
 The `# level:` header describes the language admitted by the UI checker.

@@ -13,7 +13,7 @@ host for widget DSL execution. The shared dependency is documented in
 ```text
 LLM-generated L0/L1 card
   → octoscript-ui-l0: check and realize
-  → semantic UiNode + bindings
+  → realized semantic card tree + bindings
   → theme/component kit lowering
   → renderer UiNode
   → octoscript-makepad: translate
@@ -22,7 +22,7 @@ LLM-generated L0/L1 card
   → native Makepad widgets
 ```
 
-[Octoscript-Makepad](https://github.com/OctoSense-org/Octoscript-Makepad)
+[OctoScript-Makepad](https://github.com/OctoSense-org/OctoScript-Makepad)
 provides the renderer/node model, backend translation and native component
 kits. The embedding UI host supplies data, widget modules, event handling and
 state retention. Its adapter connects declared card actions to application
@@ -34,13 +34,15 @@ inside the same VM instance or have the same available modules.
 
 The [UI profile](ui-profile-l0.md) is the formal contract for generated L0/L1
 source. Practical composition, themes and interaction flows are documented in
-[Octoscript-AppCard](https://github.com/OctoSense-org/Octoscript-AppCard).
+[OctoScript-App-Design-Flow](https://github.com/OctoSense-org/OctoScript-App-Design-Flow).
 The [purpose and architecture](positioning.md) guide distinguishes the
 workflow and UI host responsibilities.
 
+For current host ownership and launch commands, follow [the app and agent walkthrough](../../../guides/octosense-apps.en.md). The framework catalog and preview evaluate their final `View` on the main VM and mount it in `Splash.view`; a contained app has its own admission and isolate setup.
+
 ## Makepad host and compatibility fixture
 
-The pinned Makepad source includes the
+The Makepad revision recorded in this reference includes the
 [`Splash` widget](https://github.com/OctoSense-org/makepad/blob/9069cfaf87960f535f2440d736d223238b88c5b1/widgets/src/splash.rs)
 and a [Splash example application](https://github.com/OctoSense-org/makepad/tree/9069cfaf87960f535f2440d736d223238b88c5b1/examples/splash).
 The widget supplies native UI bindings and mounts the widget tree.

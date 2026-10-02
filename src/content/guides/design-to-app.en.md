@@ -17,7 +17,7 @@ The runner orchestrates these stages. It does not call an image model or automat
 
 ## Worked example: booking an air-conditioner installation
 
-The [aircon flow manifest](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-to-card/examples/aircon.flow.json) describes a 12-scene service example. It moves from shopping and delivery to installation, calendar coordination and payment. Those transitions come from service state, not an animation timeline.
+The [aircon flow manifest](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/image-to-card/examples/aircon.flow.json) describes a 12-scene service example. It moves from shopping and delivery to installation, calendar coordination and payment. Those transitions come from the example's service state. Names such as `installation.open_slots` are example service contracts, not preinstalled cross-app permissions. The website does not book appointments or make payments.
 
 Scene `aircon-05` offers installation after delivery. Its source-to-component mapping illustrates the key decisions:
 
@@ -40,6 +40,14 @@ bash tools/image-to-appcard-flow.sh plan \
 ```
 
 `plan` prints the stages and arguments without executing them. The repository guide describes preparation, compilation, evidence and packaging. The source image, service implementation and native build environment remain explicit inputs.
+
+## What the default runner actually does
+
+The default stages are `intake,semantic,compile,bundle,service-test`: preserve the inputs, check the authored scene mappings, compile card/data/kit files, export the bundle, then run the manifest's explicit service checks. Scene contracts and mappings must already exist before semantic checking. Preparation, native capture, visual review and website packaging require their own selected stages; they are not implied by the default list.
+
+The runner resolves the plan before mutation and records commands, logs and exit results. The first failed command stops subsequent execution; `run.json` records what remains unrun. A successful export still needs an app manifest, listing and the publishing hand-off: capture and review screenshots, restamp and check, have the key holder sign, and obtain approval for the exact submission. Follow the [Design Flow code walkthrough](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/218b25d2460d64f843932f67d419467618464fb9/docs/CODE-WALKTHROUGH.md) for that sequence.
+
+For a text brief and a `main.splash` app, use the separate [script-app flow](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/main/flows/script-app). [Run an app, then follow its agent](octosense-apps.en.md) explains the local host and shell integration.
 
 ## Flow 2: a Sketch document becomes a reusable kit
 

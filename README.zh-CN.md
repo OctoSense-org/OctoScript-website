@@ -4,9 +4,11 @@
 
 > **要开发 OctoSense 应用？** 你不需要这个仓库：它是语言网站 <https://octoscript.org/> 的源码，可作为背景阅读，但不属于开发、检查或发布应用的步骤。请按 [OctoSense 组织主页](https://github.com/OctoSense-org)给出的顺序阅读：[OctoScript-App-Design-Flow `AGENTS.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/AGENTS.md) → [`flows/README.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/README.md) → [`docs/QUICKSTART.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/docs/QUICKSTART.md)。
 
-[Octoscript](https://github.com/OctoSense-org/Octoscript) 的独立双语网站，维护于 [OctoSense-org/Octoscript-website](https://github.com/OctoSense-org/Octoscript-website)。英文版位于 `/`，简体中文版位于 `/cn/`。
+[Octoscript](https://github.com/OctoSense-org/Octoscript) 的独立双语网站，维护于 [OctoSense-org/OctoScript-website](https://github.com/OctoSense-org/OctoScript-website)。英文版位于 `/`，简体中文版位于 `/cn/`。
 
-网站介绍这门 DSL 的设计动机、语法、宿主权限、L0–L3 渲染分层、UI 能力等级、Splash、原生组合以及 Agent 工具链。每种语言各有八篇指南，逐一讲解页面上的各项约定。设计到组件的示例配有可搜索的组件目录和一个真实的 Makepad/WebAssembly 实验室。支持浅色和深色主题。
+网站介绍这门 DSL 的设计动机、语法、宿主权限、L0–L3 渲染分层、UI 能力等级、Splash、原生组合以及 Agent 工具链。每种语言各有九篇指南，逐一讲解页面上的各项约定。设计到组件的示例配有可搜索的组件目录和一个真实的 Makepad/WebAssembly 实验室。支持浅色和深色主题。
+
+[应用与 Agent 指南](src/content/guides/octosense-apps.cn.md)追踪原生 Rust、Splash 和 L0 应用如何进入 OctoSense，并说明用户／系统对话、应用数据、工具授权与 Tokio 任务。协作规则见 [AGENTS.md](AGENTS.md)。
 
 ## 本地运行
 
@@ -41,7 +43,7 @@ npm run test:e2e
 - `src/styles/`：字体排印、响应式布局以及浅色/深色主题 token。
 - `public/examples/provenance.json`：图片来源哈希以及已归档设计评审的状态。
 
-所有导入都在本仓库内解析。网站内容请在这里编辑。若要刷新某个上游快照，请先审阅语言仓库中对应的文档，把它复制到相同的快照路径，并更新清单中的哈希和来源记录。语言仓库的变更不会在不知不觉中改变网站。
+所有导入都在本仓库内解析。网站内容请在这里编辑。若要刷新某个上游快照，请先审阅语言仓库中对应的文档，把它复制到相同的快照路径，并更新清单中的哈希和来源记录。网站本地的架构修正单独记录在 `sources.json`，保留最初快照的基准提交与日期。语言仓库的变更不会在不知不觉中改变网站。
 
 设计查看器展示的是录制好的映射和原生截图；它不运行视觉模型。已归档的评审仍记录着尚存的视觉差异。购买的 Sketch 素材不会再分发。学校、快递和出行卡片使用仅在浏览器中存在的示例数据；其中的审批不会运行工作流，也不会触发外部操作。
 

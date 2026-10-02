@@ -56,12 +56,13 @@ These facilities are provided by the Makepad UI host. A shader-capable UI langua
 
 **Direct Splash:** a trusted UI host installs widgets and evaluates their DSL, retaining Makepad's full composition and styling model.
 
-**Generated L0/L1:** the host first checks a narrower UI contract, realizes semantic `UiNode`s, applies a theme/component kit, and lowers the result to Splash. L0 realization does not need a VM; L1 adds bounded pure arithmetic. Kit evaluation and final Splash mounting can use the shared `makepad-script` implementation.
+**Generated L0/L1:** the host first checks a narrower UI contract, realizes a semantic card tree, then lowers it through a component kit. Checked evaluation produces renderer `UiNode`s; translation produces Makepad widget source. L0 realization does not need a VM; L1 adds bounded pure arithmetic. Kit evaluation and final Splash mounting can use the shared `makepad-script` implementation.
 
 ```text
-agent → L0/L1 → checked UiNode → reusable kit → Splash → Makepad widgets
-                                              ↑
-                              direct Splash UI authoring
+L0/L1 + data → realized card tree → kit lowering → renderer UiNode
+  → Makepad widget source → host mounts native widgets
+
+direct Splash source → contained UI host → native widgets
 ```
 
 This reuses the existing UI language and component system while giving generated cards an explicit admission boundary. It does not route widget declarations through the standalone workflow checker. See [Makepad integration](../upstream/octoscript/docs/makepad-ui-compatibility.md).
@@ -85,9 +86,9 @@ A host can place a platform surface or control alongside Makepad-drawn content: 
 
 There are concrete integration points: [Makepad Video](https://github.com/OctoSense-org/makepad/blob/octoscript/widgets/src/video.rs) attaches native camera previews; [the iOS backend](https://github.com/OctoSense-org/makepad/blob/octoscript/platform/src/os/apple/ios/ios.rs) owns native preview lifecycles; [the Android bridge](https://github.com/OctoSense-org/makepad/blob/octoscript/platform/src/os/linux/android/android_jni.rs) connects a native composer over the GL surface. These prove useful mixed surfaces, not automatic compatibility for every arbitrary control combination.
 
-## Reuse Rust logic: one camera, two hosts
+## Historical example: one camera, two hosts
 
-The [camera example](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/feat/camera-app/apps/camera) separates `logic/`, `native/` and `oh/`. Both host manifests depend on `octosense-camera-logic`.
+The [camera example on a development branch](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/tree/641353aff8021f9f74e2d8ed259c1d4fc269721e/apps/camera) separates `logic/`, `native/` and `oh/`. Both host manifests depend on `octosense-camera-logic`. This is a recorded two-host example, not the architecture of the current OctoSense Camera bundle.
 
 ```text
                  octosense-camera-logic
@@ -116,3 +117,8 @@ An agent asks for current bounds, exercises a control, waits for a frame, checks
 “Headless” in this development loop means that the Studio GUI is unnecessary and a supported native window can be hidden. Visual verification still uses the real GPU backend; a simulated renderer does not prove native appearance. Instrument coverage differs by backend, and the port belongs to an explicitly instrumented development build. See [app remote control](https://github.com/OctoSense-org/makepad/blob/octoscript/docs/agents/app-remote.md) and [the current AppCard instrument workflow](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/core/NATIVE-INSTRUMENT.md).
 
 That closes the A2App loop: source is inspectable, widgets are addressable, actions are testable and visual changes can be traced back to a component. [The design-to-app flows](design-to-app.en.md) apply it to generated images and Sketch documents.
+
+
+## Running apps and talking to their agents
+
+The instruments above support development. [Run an app, then follow its agent](octosense-apps.en.md) explains the product runtime: standalone card-host versus the full shell, native Rust and contained apps, human/system conversations, data access and host-authorized tools.

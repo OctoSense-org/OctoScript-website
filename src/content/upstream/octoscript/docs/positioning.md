@@ -23,10 +23,12 @@ VM changes belong there; the pin and update policy are in [UPSTREAM.md](../UPSTR
 | --- | --- |
 | Makepad `makepad-script` | Shared VM, parser and script execution machinery |
 | Octoscript | Workflow language contract, review, execution limits, capability APIs, workflow dataflow and UI profile checking/realization |
-| Embedding host, such as Octos | Register services, bind accounts and data, authorize actions, schedule work and retain application state |
+| Workflow embedding host | Register services, bind accounts and data, authorize actions, schedule work and retain application state |
 | Octoscript-Makepad | Translate UI nodes into Makepad's widget DSL and supply native component kits |
 | Makepad Splash host | Provide widget bindings, mount the generated widget DSL and handle native rendering and interaction |
-| Octoscript-AppCard | App Card composition, theme usage, interaction flows, agent/client integration and end-to-end examples |
+| OctoScript-App-Design-Flow | App authoring, component composition, CLI launch and design-to-card flows |
+| App Hub | Bundle admission, installation, contained UI hosting and host-service transport |
+| OctoSense + octos | Shell-owned app data and service adapters; kernel-owned agent turns, sessions and peer routing |
 
 Sharing a VM implementation does not require sharing one VM instance, heap or
 set of host bindings. Workflow hosts expose their registered tools; UI hosts
@@ -58,7 +60,7 @@ the grants. The draft itself does not authorize a call. See
 
 ```text
 generated L0/L1 declarations
-  → checked semantic UiNode tree and data bindings
+  → realized semantic card tree and data bindings
   → theme/component kit and renderer nodes
   → Makepad Splash DSL
   → Splash host using makepad-script
@@ -77,12 +79,7 @@ language, not a sequence of product or rendering layers. The
 [formal UI profile](ui-profile-l0.md) defines admission; the
 [Makepad integration guide](makepad-ui-compatibility.md) explains the handoff.
 
-Detailed App Card design and usage belong in
-[Octoscript-AppCard](https://github.com/OctoSense-org/Octoscript-AppCard), including
-[component composition](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/docs/APP-CARD-COMPONENTIZATION.md)
-and the [agent/client architecture](https://github.com/OctoSense-org/Octoscript-AppCard/blob/main/docs/ARCHITECTURE.md).
-Native renderer and kit APIs live in
-[Octoscript-Makepad](https://github.com/OctoSense-org/Octoscript-Makepad).
+App authoring belongs in [OctoScript-App-Design-Flow](https://github.com/OctoSense-org/OctoScript-App-Design-Flow). Native renderer and kit APIs live in [OctoScript-Makepad](https://github.com/OctoSense-org/OctoScript-Makepad). The website's [app and agent walkthrough](../../../guides/octosense-apps.en.md) follows current shell integration, run commands and tool boundaries.
 
 ## Where to start
 

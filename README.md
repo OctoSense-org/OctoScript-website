@@ -4,9 +4,11 @@ English | [简体中文](README.zh-CN.md)
 
 > **Building an OctoSense app?** You do not need this repository: it is the source of the language website <https://octoscript.org/>, useful background reading but not part of building, checking or publishing an app. Start from the [OctoSense organization profile](https://github.com/OctoSense-org)'s reading order: [OctoScript-App-Design-Flow `AGENTS.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/AGENTS.md) → [`flows/README.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/flows/README.md) → [`docs/QUICKSTART.md`](https://github.com/OctoSense-org/OctoScript-App-Design-Flow/blob/main/docs/QUICKSTART.md).
 
-The independent bilingual website for [Octoscript](https://github.com/OctoSense-org/Octoscript), maintained in [OctoSense-org/Octoscript-website](https://github.com/OctoSense-org/Octoscript-website). English is at `/`; Simplified Chinese is at `/cn/`.
+The independent bilingual website for [Octoscript](https://github.com/OctoSense-org/Octoscript), maintained in [OctoSense-org/OctoScript-website](https://github.com/OctoSense-org/OctoScript-website). English is at `/`; Simplified Chinese is at `/cn/`.
 
-The site covers the DSL's motivation, syntax, host authority, L0–L3 rendering layers, UI capability levels, Splash, native composition and agent tooling. Eight guides in each language explain the contracts on the page. A searchable component catalog and a real Makepad/WebAssembly lab accompany the design-to-component examples. Light and dark themes are supported.
+The site covers the DSL's motivation, syntax, host authority, L0–L3 rendering layers, UI capability levels, Splash, native composition and agent tooling. Nine guides in each language explain the contracts on the page. A searchable component catalog and a real Makepad/WebAssembly lab accompany the design-to-component examples. Light and dark themes are supported.
+
+The [app and agent guide](src/content/guides/octosense-apps.en.md) follows native Rust, Splash and L0 apps into OctoSense, including human/system conversations, app data, tool grants and Tokio tasks. Contributor instructions are in [AGENTS.md](AGENTS.md).
 
 ## Run locally
 
@@ -41,7 +43,7 @@ The build checks Astro/TypeScript and writes the static site to `dist/`. Playwri
 - `src/styles/`: typography, responsive layout and light/dark theme tokens.
 - `public/examples/provenance.json`: image source hashes and the archived design review's status.
 
-All imports resolve within this repository. Edit website content here. To refresh an upstream snapshot, review the corresponding language-repository document, copy it into the same snapshot path, and update its manifest hash and provenance. Changes in the language repository do not silently change the website.
+All imports resolve within this repository. Edit website content here. To refresh an upstream snapshot, review the corresponding language-repository document, copy it into the same snapshot path, and update its manifest hash and provenance. Website-local architecture corrections are recorded separately in `sources.json`, retaining the original snapshot base and date. Changes in the language repository do not silently change the website.
 
 The design inspector shows recorded mappings and native captures; it does not run a vision model. The archived review still records remaining visual differences. Purchased Sketch assets are not redistributed. The school, delivery and travel cards use browser-only sample data; their approvals do not run workflows or external actions.
 
